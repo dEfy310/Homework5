@@ -8,24 +8,33 @@ import java.util.Set;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private final Set<String> employeeSet;
+    private final Set<Employee> employeeSet;
 
     public EmployeeServiceImpl() {
         employeeSet = new HashSet<>();
     }
 
     @Override
-    public boolean addEmployee(String people) {
-        return employeeSet.add(people);
+    public boolean addEmployee(String firstName, String lastName) {
+        Employee employee = new Employee(firstName, lastName);
+        return employeeSet.add(employee);
+    }
+
+
+    @Override
+    public boolean removeEmployee(String firstName, String lastName) {
+        Employee employee = new Employee(firstName, lastName);
+        return employeeSet.remove(employee);
     }
 
     @Override
-    public boolean removeEmployee(String people) {
-        return employeeSet.remove(people);
+    public boolean findEmployee(String firstName, String lastName) {
+        Employee employee = new Employee(firstName, lastName);
+        return employeeSet.contains(employee);
     }
 
     @Override
-    public Set<String> getEmployeeList() {
+    public Set<Employee> getEmployeeList() {
         return employeeSet;
     }
 }
