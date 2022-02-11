@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/employee/")
+@RequestMapping("/employee")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -17,22 +17,22 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping(path = "add/")
-    public boolean addEmployee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
+    @GetMapping(path = "/add")
+    public boolean addEmployee(@RequestParam() String firstName, @RequestParam() String lastName) {
         return employeeService.addEmployee(firstName, lastName);
     }
 
-    @GetMapping(path = "remove/")
-    public boolean removeEmployee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
+    @GetMapping(path = "/remove")
+    public boolean removeEmployee(@RequestParam() String firstName, @RequestParam() String lastName) {
         return employeeService.removeEmployee(firstName, lastName);
     }
 
-    @GetMapping(path = "find/")
-    public boolean findEmployee(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
+    @GetMapping(path = "/find")
+    public boolean findEmployee(@RequestParam() String firstName, @RequestParam() String lastName) {
         return employeeService.findEmployee(firstName, lastName);
     }
 
-    @GetMapping(path = "get-set/")
+    @GetMapping
     public Set<Employee> getEmployeeList() {
         return employeeService.getEmployeeList();
     }
