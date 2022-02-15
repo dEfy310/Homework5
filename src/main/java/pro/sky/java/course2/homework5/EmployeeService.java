@@ -9,5 +9,5 @@ public interface EmployeeService {
 
     boolean findEmployee(String firstName, String lastName);
 
-    Set<Employee> getEmployeeList();
+    Set<Employee> getEmployees();
 }
